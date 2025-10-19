@@ -300,6 +300,7 @@ footer {
   margin-bottom: 30px;
   padding: 40px;
   border-radius: 100px;
+  width: 276px;
 }
 .isCartExist > div > p > span {
   color: #4592f7;
@@ -307,7 +308,7 @@ footer {
 }
 .isCartExist > div > p:last-child {
   margin-top: 15px;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   text-align: center;
   width: 100%;
   color: #7b7b7b;
@@ -316,7 +317,7 @@ footer {
   background-color: #4592f7;
   color: #fff;
   text-decoration: none;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   padding: 15px;
   border-radius: 30px;
 }

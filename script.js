@@ -13,8 +13,8 @@ const cartTable = document.querySelector(`.cart-container`);
 const protocol = window.location.protocol;
 const host = window.location.host;
 const filePath = window.location.pathname;
-const shopAddress = `${protocol}//${host}/pages/shop.html`;
-const cartAddress = `${protocol}//${host}/pages/cart.html`;
+const shopAddress = `${protocol}//${host}/pages/shop`;
+const cartAddress = `${protocol}//${host}/pages/cart`;
 
 ////! Nav And Toogle Menu Start! ////
 
