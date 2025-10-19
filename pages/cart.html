@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <script defer src="../script.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <title>Cart</title>
+  </head>
+  <body>
+    <div class="toggle-menu">
+      <div class="menu-header">
+        <p class="menu-p">Menu</p>
+        <p class="close">&#10799;</p>
+      </div>
+
+      <ul class="menu-list">
+        <li><a class="list-item" href="../index.html">Home</a></li>
+        <li><a class="list-item" href="./shop.html">Shop</a></li>
+        <li><a class="list-item" href="./cart.html">Cart</a></li>
+      </ul>
+    </div>
+
+    <nav>
+      <a class="h1" href="/">Fashion Shop</a>
+      <div class="menu-div"><p class="menu">&#8801;</p></div>
+      <ul class="navLists">
+        <li><a class="homeNav" data-id="1" href="../index.html">Home</a></li>
+        <li><a class="navList" data-id="2" href="./shop.html">Shop</a></li>
+        <li><a class="navList" data-id="3" href="">Cart</a></li>
+      </ul>
+    </nav>
+    <section class="cart-container">
+      <div class="isCartExist hidden">
+        <img src="/img/shoppingCart.svg" alt="shoppingCart" />
+        <div>
+          <p>Your Cart is <span>Empty</span>!</p>
+          <p>Go find the product you like</p>
+        </div>
+
+        <a href="/pages/shop.html">Start Shopping</a>
+      </div>
+      <div class="labels">
+        <p class="x">Item</p>
+        <p class="x">Price</p>
+        <p class="x">Quantity</p>
+        <p class="x">Total</p>
+      </div>
+      <!-- <div class="carts"> -->
+      <!-- <div class="item">
+          <div class="img-container">
+            <img width="70px" src="${cart.img}" alt="" />
+          </div>
+
+          <div class="product-name">
+            <h3>${cart.name}</h3>
+            <p>Added at 2024/4/6</p>
+          </div>
+        </div>
+
+        <div class="price-div"><p class="item-price">$${cart.price}</p></div>
+
+        <div class="quantity-control">
+          <i class="fa-solid fa-plus"></i>
+          <input
+            type="number"
+            class="quantity-input"
+            value="0"
+            min="0"
+            max="99"
+          />
+          <i class="fa-solid fa-minus"></i>
+        </div>
+
+        <div class="total-div">
+          <p class="total-price">$100</p>
+          <i class="fa-solid fa-trash"></i>
+        </div> -->
+      <!-- </div> -->
+    </section>
+    <footer><p>© 2025 Fashion Shop. All Rights Reversed.</p></footer>
+  </body>
+</html>

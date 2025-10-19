@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plus and Minus Button Example</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+
+      .container {
+        text-align: center;
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 30px;
+      }
+
+      .quantity-control {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin: 20px 0;
+      }
+
+      .btn {
+        background-color: #4592f7;
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 18px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #3670bb;
+      }
+
+      .btn:active {
+        transform: scale(0.95);
+      }
+
+      .minus-btn {
+        background-color: #f74545;
+      }
+
+      .minus-btn:hover {
+        background-color: #d63535;
+      }
+
+      .quantity-input {
+        width: 60px;
+        height: 40px;
+        text-align: center;
+        font-size: 18px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        outline: none;
+      }
+
+      .quantity-input:focus {
+        border-color: #4592f7;
+      }
+
+      .info {
+        margin-top: 20px;
+        color: #666;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Plus and Minus Button Example</h1>
+
+      <div class="quantity-control">
+        <button class="btn minus-btn" id="decreaseBtn">-</button>
+        <input
+          type="number"
+          class="quantity-input"
+          id="quantityInput"
+          value="1"
+          min="1"
+          max="99"
+        />
+        <button class="btn plus-btn" id="increaseBtn">+</button>
+      </div>
+
+      <p class="info">Current value: <span id="currentValue">1</span></p>
+
+      <div class="additional-examples">
+        <h2>More Examples</h2>
+
+        <!-- Example 2: With step of 5 -->
+        <div class="quantity-control">
+          <button class="btn minus-btn" data-target="quantityInput2">-</button>
+          <input
+            type="number"
+            class="quantity-input"
+            id="quantityInput2"
+            value="10"
+            min="0"
+            max="100"
+            step="5"
+          />
+          <button class="btn plus-btn" data-target="quantityInput2">+</button>
+        </div>
+        <p class="info">This example increases/decreases by 5 (step: 5)</p>
+
+        <!-- Example 3: With custom limits -->
+        <div class="quantity-control">
+          <button class="btn minus-btn" data-target="quantityInput3">-</button>
+          <input
+            type="number"
+            class="quantity-input"
+            id="quantityInput3"
+            value="50"
+            min="10"
+            max="90"
+          />
+          <button class="btn plus-btn" data-target="quantityInput3">+</button>
+        </div>
+        <p class="info">This example has min: 10 and max: 90</p>
+      </div>
+    </div>
+
+    <script>
+      // Example 1: Basic functionality
+      const increaseBtn = document.getElementById("increaseBtn");
+      const decreaseBtn = document.getElementById("decreaseBtn");
+      const quantityInput = document.getElementById("quantityInput");
+      const currentValue = document.getElementById("currentValue");
+
+      // Function to update the display
+      function updateDisplay() {
+        currentValue.textContent = quantityInput.value;
+      }
+
+      // Increase button functionality
+      increaseBtn.addEventListener("click", function () {
+        let currentValue = parseInt(quantityInput.value);
+        const maxValue = parseInt(quantityInput.max) || Infinity;
+
+        if (currentValue < maxValue) {
+          quantityInput.value = currentValue + 1;
+          updateDisplay();
+        }
+      });
+
+      // Decrease button functionality
+      decreaseBtn.addEventListener("click", function () {
+        let currentValue = parseInt(quantityInput.value);
+        const minValue = parseInt(quantityInput.min) || 1;
+
+        if (currentValue > minValue) {
+          quantityInput.value = currentValue - 1;
+          updateDisplay();
+        }
+      });
+
+      // Handle input changes directly
+      quantityInput.addEventListener("input", function () {
+        let value = parseInt(this.value);
+        const min = parseInt(this.min) || 1;
+        const max = parseInt(this.max) || Infinity;
+
+        if (isNaN(value) || value < min) {
+          this.value = min;
+        } else if (value > max) {
+          this.value = max;
+        }
+
+        updateDisplay();
+      });
+
+      // Handle blur event to ensure valid value
+      quantityInput.addEventListener("blur", function () {
+        let value = parseInt(this.value);
+        const min = parseInt(this.min) || 1;
+        const max = parseInt(this.max) || Infinity;
+
+        if (isNaN(value) || value < min) {
+          this.value = min;
+        } else if (value > max) {
+          this.value = max;
+        }
+
+        updateDisplay();
+      });
+
+      // Example 2 & 3: Generic functionality for multiple instances
+      document.querySelectorAll(".minus-btn, .plus-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          const targetId = this.getAttribute("data-target");
+          if (!targetId) return; // Skip if no target specified (for first example)
+
+          const input = document.getElementById(targetId);
+          if (!input) return;
+
+          let currentValue = parseInt(input.value);
+          const min = parseInt(input.min) || 0;
+          const max = parseInt(input.max) || Infinity;
+          const step = parseInt(input.step) || 1;
+
+          if (this.classList.contains("plus-btn")) {
+            if (currentValue + step <= max) {
+              input.value = currentValue + step;
+            }
+          } else if (this.classList.contains("minus-btn")) {
+            if (currentValue - step >= min) {
+              input.value = currentValue - step;
+            }
+          }
+        });
+      });
+
+      // Initialize display
+      updateDisplay();
+    </script>
+  </body>
+</html>
