@@ -15,6 +15,7 @@ const host = window.location.host;
 const filePath = window.location.pathname;
 const shopAddress = `${protocol}//${host}/pages/shop`;
 const cartAddress = `${protocol}//${host}/pages/cart`;
+const homeAddress = `${protocol}//${host}/`;
 
 ////! Nav And Toogle Menu Start! ////
 
